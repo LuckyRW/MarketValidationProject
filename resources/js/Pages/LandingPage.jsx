@@ -204,75 +204,85 @@ export function NavBar() {
         {/* Right side - Account & Login */}
         <NavigationMenu>
           <NavigationMenuList className="flex gap-2">
-            <NavigationMenuItem>
-              <NavigationMenuTrigger className="text-white bg-transparent hover:bg-gray-800 data-[state=open]:bg-gray-800">
-                Account
-              </NavigationMenuTrigger>
-              <NavigationMenuContent className="bg-gray-800 border border-gray-700">
-                <ul className="grid w-[200px] gap-2 p-4">
-                  <ListItem href="/account/profile" title="Profile" className="hover:bg-gray-700">
-                    Manage your account
-                  </ListItem>
-                  <ListItem href="/account/orders" title="Orders" className="hover:bg-gray-700">
-                    View your purchases
-                  </ListItem>
-                  <ListItem href="/account/settings" title="Settings" className="hover:bg-gray-700">
-                    Account preferences
-                  </ListItem>
-                </ul>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              {!account?(
-              <NavigationMenuLink 
-                href="/login"
-                className={cn(
-                  navigationMenuTriggerStyle(),
-                  "text-white bg-transparent hover:bg-gray-800"
-                )}
-              >
-              Login
-              
-              </NavigationMenuLink>):
-              (
-                <NavigationMenuLink 
-                href="/logout"
-                className={cn(
-                  navigationMenuTriggerStyle(),
-                  "text-white bg-transparent hover:bg-gray-800"
-                )}
-              >
-              Logout
-              </NavigationMenuLink>
-              )
-              }
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuLink
-                href="/cart"
-                className={cn(
-                  navigationMenuTriggerStyle(),
-                  "text-white bg-transparent hover:bg-gray-800"
-                )}
-              >
-                Cart
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              
-              <NavigationMenuLink
-                href="/messages"
-                className={cn(
-                  navigationMenuTriggerStyle(),
-                  "text-white bg-transparent hover:bg-gray-800"
-                )}
-              >
-                Messages
-              </NavigationMenuLink>
-             
-            </NavigationMenuItem>
+
+            {/* If NOT logged in, show only Login */}
+            {!account && (
+              <NavigationMenuItem>
+                <NavigationMenuLink
+                  href="/login"
+                  className={cn(
+                    navigationMenuTriggerStyle(),
+                    "text-white bg-transparent hover:bg-gray-800"
+                  )}
+                >
+                  Login
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+            )}
+
+            {/* If logged in, show Account, Cart, Messages, Logout */}
+            {account && (
+              <>
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger className="text-white bg-transparent hover:bg-gray-800 data-[state=open]:bg-gray-800">
+                    Account
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent className="bg-gray-800 border border-gray-700">
+                    <ul className="grid w-[200px] gap-2 p-4">
+                      <ListItem href="/account/profile" title="Profile" className="hover:bg-gray-700">
+                        Manage your account
+                      </ListItem>
+                      <ListItem href="/account/orders" title="Orders" className="hover:bg-gray-700">
+                        View your purchases
+                      </ListItem>
+                      <ListItem href="/account/settings" title="Settings" className="hover:bg-gray-700">
+                        Account preferences
+                      </ListItem>
+                    </ul>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+
+                <NavigationMenuItem>
+                  <NavigationMenuLink
+                    href="/cart"
+                    className={cn(
+                      navigationMenuTriggerStyle(),
+                      "text-white bg-transparent hover:bg-gray-800"
+                    )}
+                  >
+                    Cart
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+
+                <NavigationMenuItem>
+                  <NavigationMenuLink
+                    href="/messages"
+                    className={cn(
+                      navigationMenuTriggerStyle(),
+                      "text-white bg-transparent hover:bg-gray-800"
+                    )}
+                  >
+                    Messages
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+
+                <NavigationMenuItem>
+                  <NavigationMenuLink
+                    href="/logout"
+                    className={cn(
+                      navigationMenuTriggerStyle(),
+                      "text-white bg-transparent hover:bg-gray-800"
+                    )}
+                  >
+                    Logout
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+              </>
+            )}
+
           </NavigationMenuList>
         </NavigationMenu>
+
       </div>
     </div>
   )
