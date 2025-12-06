@@ -8,6 +8,8 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
+import DefaultAvatar from '@/components/DefaultAvatar'
+import { normalizeImage } from '@/lib/image'
 import {
   Carousel,
   CarouselContent,
@@ -91,7 +93,7 @@ export function NavBar() {
   const {account}=usePage().props
   
   return (
-    <div className='border-b-2 border-b-gray-700 pb-2 bg-gray-900'>
+    <div className='border-b-2 border-b-gray-700 pb-2 bg-gray-900 py-2'>
       <div className="flex w-full items-center max-w-7xl mx-auto px-4">
         {/* Left side navigation */}
         <div className="flex items-center flex-1">
@@ -116,21 +118,21 @@ export function NavBar() {
 
               {/* Products Dropdown */}
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="text-white bg-transparent hover:bg-gray-800 data-[state=open]:bg-gray-800">
+                <NavigationMenuTrigger className="text-white bg-transparent hover:bg-gray-200 data-[state=open]:bg-gray-200">
                   <a href ="/products">Products</a>
                 </NavigationMenuTrigger>
                 <NavigationMenuContent className="bg-gray-800 border border-gray-700">
                   <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                    <ListItem href="/products/website-templates" title="Website Templates" className="hover:bg-gray-700">
+                    <ListItem href="/products/website-templates" title="Website Templates" className="hover:bg-gray-600">
                       High-quality, customizable website templates
                     </ListItem>
-                    <ListItem href="/products/custom-design" title="Custom Design" className="hover:bg-gray-700">
+                    <ListItem href="/products/custom-design" title="Custom Design" className="hover:bg-gray-600">
                       Affordable custom design services
                     </ListItem>
-                    <ListItem href="/products/company-profile" title="Company Profile" className="hover:bg-gray-700">
+                    <ListItem href="/products/company-profile" title="Company Profile" className="hover:bg-gray-600">
                       Professional company profile designs
                     </ListItem>
-                    <ListItem href="/products/professional-design" title="Professional Design" className="hover:bg-gray-700">
+                    <ListItem href="/products/professional-design" title="Professional Design" className="hover:bg-gray-600">
                       Tailored design solutions for businesses
                     </ListItem>
                   </ul>
@@ -139,24 +141,24 @@ export function NavBar() {
 
               {/* Designers Dropdown */}
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="text-white bg-transparent hover:bg-gray-800 data-[state=open]:bg-gray-800">
+                <NavigationMenuTrigger className="text-white bg-transparent hover:bg-gray-200 data-[state=open]:bg-gray-200">
                   <a href="/designers">Designers</a>
                 </NavigationMenuTrigger>
                 <NavigationMenuContent className="bg-gray-800 border border-gray-700">
                   <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                    <ListItem href="/designers?specialty=ui-ux" title="UI/UX Design" className="hover:bg-gray-700">
+                    <ListItem href="/designers?specialty=ui-ux" title="UI/UX Design" className="hover:bg-gray-600">
                       Interface and experience design
                     </ListItem>
-                    <ListItem href="/designers?specialty=product" title="Product Design" className="hover:bg-gray-700">
+                    <ListItem href="/designers?specialty=product" title="Product Design" className="hover:bg-gray-600">
                       Digital products and SaaS
                     </ListItem>
-                    <ListItem href="/designers?specialty=brand" title="Brand Identity" className="hover:bg-gray-700">
+                    <ListItem href="/designers?specialty=brand" title="Brand Identity" className="hover:bg-gray-600">
                       Logos and brand systems
                     </ListItem>
-                    <ListItem href="/designers?specialty=web" title="Web Design" className="hover:bg-gray-700">
+                    <ListItem href="/designers?specialty=web" title="Web Design" className="hover:bg-gray-600">
                       Websites and landing pages
                     </ListItem>
-                    <ListItem href="/designers?specialty=motion" title="Motion Design" className="hover:bg-gray-700">
+                    <ListItem href="/designers?specialty=motion" title="Motion Design" className="hover:bg-gray-600">
                       Animations and interactions
                     </ListItem>
                   </ul>
@@ -165,33 +167,33 @@ export function NavBar() {
 
               {/* Assets Dropdown */}
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="text-white bg-transparent hover:bg-gray-800 data-[state=open]:bg-gray-800">
+                <NavigationMenuTrigger className="text-white bg-transparent hover:bg-gray-200 data-[state=open]:bg-gray-200">
                   <a href="/assets">Assets</a>
                 </NavigationMenuTrigger>
                 <NavigationMenuContent className="bg-gray-800 border border-gray-700">
                   <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                    <ListItem href="/assets?category=ui-kits" title="UI Kits" className="hover:bg-gray-700">
+                    <ListItem href="/assets?category=ui-kits" title="UI Kits" className="hover:bg-gray-600">
                       Complete design systems and components
                     </ListItem>
-                    <ListItem href="/assets?category=icons" title="Icons" className="hover:bg-gray-700">
+                    <ListItem href="/assets?category=icons" title="Icons" className="hover:bg-gray-600">
                       Professional icon packs in multiple formats
                     </ListItem>
-                    <ListItem href="/assets?category=fonts" title="Fonts" className="hover:bg-gray-700">
+                    <ListItem href="/assets?category=fonts" title="Fonts" className="hover:bg-gray-600">
                       Licensed font families for commercial use
                     </ListItem>
-                    <ListItem href="/assets?category=illustrations" title="Illustrations" className="hover:bg-gray-700">
+                    <ListItem href="/assets?category=illustrations" title="Illustrations" className="hover:bg-gray-600">
                       Custom illustrations and vector art
                     </ListItem>
-                    <ListItem href="/assets?category=mockups" title="Mockups" className="hover:bg-gray-700">
+                    <ListItem href="/assets?category=mockups" title="Mockups" className="hover:bg-gray-600">
                       Professional device and presentation mockups
                     </ListItem>
-                    <ListItem href="/assets?category=textures" title="Textures" className="hover:bg-gray-700">
+                    <ListItem href="/assets?category=textures" title="Textures" className="hover:bg-gray-600">
                       Backgrounds and pattern resources
                     </ListItem>
-                    <ListItem href="/assets?category=3d" title="3D Assets" className="hover:bg-gray-700">
+                    <ListItem href="/assets?category=3d" title="3D Assets" className="hover:bg-gray-600">
                       3D models and abstract shapes
                     </ListItem>
-                    <ListItem href="/assets?category=photos" title="Photography" className="hover:bg-gray-700">
+                    <ListItem href="/assets?category=photos" title="Photography" className="hover:bg-gray-600">
                       High-quality stock photographs
                     </ListItem>
                   </ul>
@@ -339,15 +341,15 @@ function TextBox(prop){
                 to help bring your vision to life.
               </p>
               <div className="mt-8 space-y-4">
-                <div className="flex items-center justify-center gap-2 text-gray-300">
+                <div className="flex items-center justify-center gap-2 feature-title">
                   <span className="text-green-500"></span>
                   <span>Professional Designers</span>
                 </div>
-                <div className="flex items-center justify-center gap-2 text-gray-300">
+                <div className="flex items-center justify-center gap-2 feature-title">
                   <span className="text-green-500"></span>
                   <span>Custom Solutions</span>
                 </div>
-                <div className="flex items-center justify-center gap-2 text-gray-300">
+                <div className="flex items-center justify-center gap-2 feature-title">
                   <span className="text-green-500"></span>
                   <span>Fast Delivery</span>
                 </div>
@@ -421,16 +423,16 @@ function ProductCarousel({ onViewPortfolio, onAddToCart }){
                 </div>
               </CardHeader>
               <CardFooter className="flex gap-2">
+                <button onClick={() => onViewPortfolio(product)}
+                  className="flex-1 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors font-semibold">
+                  View Details
+                </button>
                 <button onClick={() => {
                   addToCart({ id: `product-${index}`, title: product.title, description: product.description, price: product.price, quantity: 1, image: product.image })
                   onAddToCart('Item added to cart!')
                 }}
                   className="flex-1 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition-colors font-semibold">
                   Add to cart
-                </button>
-                <button onClick={() => onViewPortfolio(product)}
-                  className="flex-1 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors font-semibold">
-                  View Details
                 </button>
               </CardFooter>
             </Card>
@@ -459,15 +461,15 @@ export function Footer(){
         
         <div className='flex flex-col w-1/3 text-center text-white font-sans'>
           <div className="font-bold text-lg mb-4">Links</div>
-          <div className="inter-400 mb-2 hover:text-gray-300 cursor-pointer text-gray-400">
+          <a href='/customer-service' className="inter-400 mb-2 hover:text-gray-300 cursor-pointer text-gray-400">
             Customer Service
-          </div>
-          <div className="inter-400 mb-2 hover:text-gray-300 cursor-pointer text-gray-400">
+          </a>
+          <a href='our-team' className="inter-400 mb-2 hover:text-gray-300 cursor-pointer text-gray-400">
             Our Team
-          </div>
-          <div className="inter-400 mb-2 hover:text-gray-300 cursor-pointer text-gray-400">
+          </a>
+          <a href='about-us' className="inter-400 mb-2 hover:text-gray-300 cursor-pointer text-gray-400">
             About Us
-          </div>
+          </a>
         </div>
         
         <div className='flex flex-col w-1/3 text-center text-white font-sans'>
