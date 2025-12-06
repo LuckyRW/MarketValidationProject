@@ -110,7 +110,7 @@ export function NavBar() {
                     "text-white bg-transparent hover:bg-gray-100"
                   )}
                 >
-                  Landing Page
+                  Home
                 </NavigationMenuLink>
               </NavigationMenuItem>
 
